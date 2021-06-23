@@ -9,7 +9,7 @@ import illustrationImg from '../assets/images/illustration.svg';
 // Components
 import { Button } from '../components/Button';
 
-// Others
+// Other
 import '../styles/auth.scss';
 import { useAuth } from '../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
