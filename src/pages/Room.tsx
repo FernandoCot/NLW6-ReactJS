@@ -6,6 +6,7 @@ import logoImg from '../assets/images/logo.svg';
 
 // Components
 import { Button } from '../components/Button';
+import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 
 // Other
@@ -28,7 +29,7 @@ type RoomParams = {
   id: string;
 }
 
-type Question = {
+type QuestionProps = {
   id: string;
   author: {
     name: string;
@@ -43,7 +44,7 @@ export const Room = () => {
   const { user } = useAuth();
   const [title, setTitle] = useState('');
   const [newQuestion, setNewQuestion] = useState('');
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<QuestionProps[]>([]);
   const params = useParams<RoomParams>();
   const roomId = params.id;
 
@@ -131,6 +132,15 @@ export const Room = () => {
             </Button>
           </div>
         </form>
+        <div className="question-list">
+          {questions.map((questionInfo) => (
+            <Question
+              key={questionInfo.id}
+              author={questionInfo.author}
+              content={questionInfo.content}
+            />
+          ))}
+        </div>
       </main>
     </div>
   );
