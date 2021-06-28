@@ -106,6 +106,8 @@ export const Room = () => {
               key={questionInfo.id}
               author={questionInfo.author}
               content={questionInfo.content}
+              isAnswered={questionInfo.isAnswered}
+              isHighlighted={questionInfo.isHighlighted}
             >
               <button
                 type="button"
