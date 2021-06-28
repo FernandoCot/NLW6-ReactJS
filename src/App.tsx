@@ -10,28 +10,42 @@ import { Room } from './pages/Room';
 import { NewRoom } from './pages/NewRoom';
 import { AdminRoom } from './pages/AdminRoom';
 
+const routesList = [
+  {
+    path: '/',
+    isExact: true,
+    component: Home
+  },
+  {
+    path: '/rooms/new',
+    isExact: false,
+    component: NewRoom
+  },
+  {
+    path: '/rooms/:id',
+    isExact: false,
+    component: Room
+  },
+  {
+    path: '/admin/rooms/:id',
+    isExact: false,
+    component: AdminRoom
+  },
+]
+
 const App = () => {
   return (
     <BrowserRouter>
       <AuthContextProvider>
         <Switch>
-          <Route
-            exact
-            path="/"
-            component={Home}
-          />
-          <Route
-            path="/rooms/new"
-            component={NewRoom}
-          />
-          <Route
-            path="/rooms/:id"
-            component={Room}
-          />
-          <Route
-            path="/admin/rooms/:id"
-            component={AdminRoom}
-          />
+          {routesList.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.isExact}
+              component={route.component}
+            />
+          ))}
         </Switch>
       </AuthContextProvider>
     </BrowserRouter>
